@@ -1,0 +1,82 @@
+Từ khóa final trong Java được sử dụng để chỉ định rằng một thành phần không thể bị thay đổi sau khi được khởi tạo. 
+Tùy vào nơi và cách sử dụng, final có thể áp dụng cho các biến, phương thức và lớp, và mỗi trường hợp sẽ có ý nghĩa và công dụng riêng.
+
+
+
+
+
+1. final với Biến
+Khi từ khóa final được sử dụng với một biến, nó có các ý nghĩa sau:
+
+Biến Cục Bộ (Local Variable):
+
+Biến được khai báo là final không thể được gán giá trị mới sau khi đã được khởi tạo.
+Điều này đảm bảo rằng giá trị của biến cục bộ không bị thay đổi trong suốt vòng đời của phương thức.
+
+Biến Instance (Field):
+
+Biến thuộc lớp (instance variable) khi được khai báo là final chỉ có thể được gán giá trị một lần, và có thể được gán giá trị tại lúc khai báo hoặc trong constructor của lớp.
+Sau khi gán giá trị, biến này không thể bị thay đổi.
+
+Biến Tĩnh (Static Variable):
+
+Một biến tĩnh (static) có thể được khai báo là final, có nghĩa là nó có giá trị không thay đổi trong suốt chương trình và có thể được gán giá trị chỉ một lần trong lúc khai báo hoặc trong một block static hoặc constructor tĩnh.
+
+
+
+
+
+
+
+
+2. final với Phương Thức (Method)
+Khi từ khóa final được sử dụng với một phương thức, nó có nghĩa là phương thức đó không thể bị ghi đè (override) trong các lớp con. Điều này rất hữu ích khi bạn muốn đảm bảo rằng một phương thức cụ thể sẽ không bị thay đổi hành vi trong các lớp kế thừa.
+
+Lý do sử dụng:
+
+Đảm bảo tính toàn vẹn của phương thức.
+Dùng để tối ưu hiệu suất (JVM có thể tối ưu hóa việc gọi phương thức final).
+
+
+
+
+
+
+3. final với Lớp (Class)
+Khi từ khóa final được sử dụng với một lớp, lớp đó không thể được kế thừa (subclass). Điều này giúp bảo vệ lớp khỏi việc bị mở rộng và thay đổi.
+
+Lý do sử dụng:
+
+Khi bạn muốn ngăn chặn việc kế thừa một lớp, ví dụ như trong trường hợp một lớp cung cấp các phương thức quan trọng và không muốn các lớp con thay đổi hành vi của nó.
+Tăng cường bảo mật và đảm bảo tính toàn vẹn.
+
+
+
+
+
+
+4. final với Tham Số Phương Thức (Method Parameters)
+Khi từ khóa final được sử dụng với tham số phương thức, nó có nghĩa là tham số không thể bị thay đổi trong phương thức. Điều này giúp tăng tính an toàn và dễ bảo trì, vì bạn sẽ biết rằng tham số không thay đổi trong suốt quá trình thực thi phương thức.
+
+
+
+5. final và Performance (Hiệu suất)
+Tối ưu hóa bộ biên dịch: Khi một phương thức hoặc lớp được khai báo là final, JVM có thể tối ưu hóa việc gọi phương thức đó, vì nó biết rằng phương thức không thể bị ghi đè.
+Giảm chi phí tài nguyên: Việc sử dụng final có thể giúp JVM hoặc bộ biên dịch tối ưu hiệu suất, giảm chi phí tài nguyên khi thực thi mã.
+
+
+
+
+
+Tóm lại
+final với Biến: Biến final không thể thay đổi giá trị sau khi được gán.
+final với Phương Thức: Phương thức final không thể bị ghi đè trong các lớp con.
+final với Lớp: Lớp final không thể bị kế thừa.
+final với Tham Số Phương Thức: Tham số final không thể bị thay đổi trong phương thức.
+
+
+
+
+
+
+
