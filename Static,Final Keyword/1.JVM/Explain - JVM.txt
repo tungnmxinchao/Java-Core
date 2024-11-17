@@ -1,0 +1,55 @@
+1. Method Area
+Công dụng:
+Chứa thông tin metadata về các lớp (class) đã được JVM tải.
+Lưu các cấu trúc như:
+Class Metadata: Tên lớp, tên phương thức, thuộc tính, thông tin cấu trúc lớp.
+Runtime Constant Pool: Chứa các hằng số (constants) như chuỗi, số, và các tham chiếu đến lớp hoặc phương thức.
+Chỉ có một Method Area trong JVM và nó được chia sẻ giữa các luồng.
+
+
+2. Heap
+Công dụng:
+Chứa tất cả các đối tượng (objects) được tạo trong Java bằng từ khóa new.
+Là khu vực bộ nhớ lớn nhất trong JVM.
+Được quản lý bởi Garbage Collector (GC), chịu trách nhiệm giải phóng bộ nhớ của các đối tượng không còn được tham chiếu.
+Phân thành hai vùng chính:
+Young Generation: Nơi các đối tượng mới được tạo.
+Eden Space: Các đối tượng mới tạo nằm ở đây.
+Survivor Space: Các đối tượng sống sót qua một lần GC từ Eden sẽ được di chuyển vào đây.
+Old Generation (Tenured Generation): Chứa các đối tượng có thời gian sống dài (đã qua nhiều chu kỳ GC).
+
+
+3. Stack
+Công dụng:
+Chứa các khung (stack frames) cho từng phương thức được gọi.
+Mỗi khung stack bao gồm:
+Local Variables: Các biến cục bộ trong phương thức.
+Operand Stack: Các giá trị trung gian khi thực hiện các phép toán.
+Return Address: Địa chỉ trả về sau khi hoàn thành phương thức.
+Được tạo riêng cho từng luồng (thread), do đó không bị chia sẻ.
+
+
+4. Program Counter (PC) Register
+Công dụng:
+Là một thanh ghi nhỏ lưu giữ địa chỉ lệnh hiện tại của một luồng.
+Dùng để theo dõi lệnh tiếp theo sẽ được thực thi.
+Mỗi luồng có một PC Register riêng biệt.
+
+
+5. Native Method Stack
+Công dụng:
+Chứa các stack frames khi thực thi các phương thức native (các phương thức viết bằng ngôn ngữ khác như C/C++).
+Hoạt động tương tự như Java Stack, nhưng dành riêng cho mã native.
+6. Execution Engine
+Không phải là bộ nhớ, nhưng quan trọng trong quản lý memory.
+Just-In-Time Compiler (JIT): Dịch bytecode thành mã máy để tối ưu hiệu suất.
+Garbage Collector (GC): Dọn dẹp bộ nhớ heap bằng cách loại bỏ các đối tượng không còn được sử dụng.
+
+
+Tổng kết:
+Method Area: Lưu metadata của class.
+Heap: Lưu trữ các đối tượng.
+Stack: Lưu thông tin tạm thời của từng phương thức.
+PC Register: Theo dõi lệnh hiện tại của luồng.
+Native Method Stack: Hỗ trợ thực thi các phương thức native.
+Cách quản lý này giúp JVM tối ưu hóa việc sử dụng bộ nhớ và đảm bảo hiệu suất cao khi chạy các ứng dụng Java.

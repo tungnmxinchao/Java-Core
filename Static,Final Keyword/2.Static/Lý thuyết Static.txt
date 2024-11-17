@@ -1,0 +1,49 @@
+Tóm lược lý thuyết về static trong Java
+
+1. Định nghĩa
+Từ khóa static được sử dụng để khai báo các biến, phương thức, khối mã hoặc lớp lồng nhau.
+Thành phần static liên kết với class, không liên kết với đối tượng cụ thể nào.
+
+2. Đặc điểm chính của static
+Liên kết với class:
+
+Các thành phần static được dùng chung cho toàn bộ class.
+Chỉ có một bản sao duy nhất của biến hoặc phương thức static.
+Vị trí trong bộ nhớ:
+
+Biến static được lưu trong Method Area.
+Không thuộc về bất kỳ đối tượng nào, tồn tại trong suốt vòng đời của class.
+Truy cập:
+
+Có thể truy cập trực tiếp thông qua tên lớp (e.g., ClassName.staticVariable).
+Cũng có thể truy cập qua đối tượng, nhưng không được khuyến nghị.
+
+3. Ứng dụng của static
+a) Biến static (static variable)
+Đặc điểm:
+Chỉ được khởi tạo một lần khi class được nạp vào JVM.
+Được chia sẻ giữa tất cả các đối tượng của class.
+
+b) Phương thức static (static method)
+Đặc điểm:
+Có thể gọi mà không cần tạo đối tượng.
+Không thể sử dụng biến instance hoặc gọi phương thức không static trực tiếp.
+Chỉ làm việc với biến static hoặc gọi phương thức static khác.
+
+c) Khối static (static block)
+Đặc điểm:
+Được thực thi một lần duy nhất khi class được nạp vào JVM, trước khi hàm main chạy.
+
+d) Lớp lồng nhau static (static nested class)
+Đặc điểm:
+Là một lớp con (nested class) được khai báo static.
+Có thể được truy cập mà không cần tạo đối tượng của lớp bên ngoài.
+
+4. Ưu điểm và hạn chế
+Ưu điểm:
+Tiết kiệm bộ nhớ: Chỉ một bản sao duy nhất của biến static.
+Thích hợp cho các thành phần dùng chung (e.g., hằng số, bộ đếm toàn cục).
+Dễ sử dụng: Không cần tạo đối tượng để truy cập.
+Hạn chế:
+Thiếu linh hoạt: Biến static không thể thay đổi theo từng đối tượng.
+Dễ gây xung đột dữ liệu trong môi trường đa luồng nếu không đồng bộ hóa (synchronization).

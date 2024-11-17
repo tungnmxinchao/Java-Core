@@ -1,0 +1,83 @@
+Hoạt động thu gom rác (Garbage Collection - GC) trong JVM
+Trong JVM, Garbage Collection (GC) là một cơ chế tự động giúp quản lý bộ nhớ bằng cách giải phóng bộ nhớ không còn sử dụng, tức là các đối tượng không còn tham chiếu nào. Mục tiêu của GC là tối ưu hóa bộ nhớ và tránh tình trạng rò rỉ bộ nhớ, giúp hệ thống hoạt động hiệu quả hơn.
+
+1. Quá trình hoạt động của Garbage Collection
+JVM tự động quản lý bộ nhớ, thu gom rác mà không cần sự can thiệp của lập trình viên. Công việc chính của GC là xác định những đối tượng không còn được sử dụng và giải phóng bộ nhớ của chúng.
+
+Thu gom rác là một quá trình tốn thời gian nhưng rất quan trọng, bởi nó giúp tránh việc hết bộ nhớ trong khi chương trình vẫn đang chạy.
+
+2. Các bước trong quá trình Garbage Collection
+Đánh dấu (Marking):
+
+GC xác định những đối tượng đang được tham chiếu (reachable objects) từ các root objects như:
+Các đối tượng trong Stack (biến địa phương và đối tượng tham chiếu).
+Các đối tượng trong Static variables.
+Các đối tượng trong Registers.
+Các đối tượng không được tham chiếu sẽ bị đánh dấu là "không sử dụng".
+Dọn dẹp (Sweeping):
+
+Sau khi GC đánh dấu các đối tượng không sử dụng, nó sẽ dọn dẹp và giải phóng bộ nhớ của các đối tượng này.
+Bộ nhớ được trả lại cho Heap để có thể tái sử dụng.
+Nén (Compacting) (Tùy chọn, trong một số chiến lược GC):
+
+Sau khi dọn dẹp, GC có thể sắp xếp lại các đối tượng trong Heap để giảm phân mảnh bộ nhớ và tạo không gian liên tục.
+Việc này giúp tăng hiệu quả sử dụng bộ nhớ và giảm chi phí của các lần phân bổ bộ nhớ tiếp theo.
+
+
+
+3. Các loại Garbage Collectors trong JVM
+JVM có nhiều chiến lược GC khác nhau, mỗi loại có ưu và nhược điểm tùy thuộc vào yêu cầu của ứng dụng.
+
+a) Serial Garbage Collector
+Đặc điểm: GC hoạt động theo cách tuần tự (single-threaded). Đây là kiểu GC đơn giản nhất, sử dụng một luồng duy nhất để thực hiện cả ba bước đánh dấu, dọn dẹp và nén.
+Ưu điểm: Dễ hiểu, dễ cấu hình và tối ưu cho các ứng dụng có ít tài nguyên.
+Nhược điểm: Không thích hợp với các ứng dụng đa luồng hoặc yêu cầu độ trễ thấp.
+
+b) Parallel Garbage Collector (Throughput Collector)
+Đặc điểm: Sử dụng nhiều luồng để thực hiện các công việc GC. Là lựa chọn mặc định trong nhiều phiên bản của JVM.
+Ưu điểm: Tối ưu cho các hệ thống đa lõi, giúp giảm thời gian dừng ứng dụng.
+Nhược điểm: Đối với các ứng dụng yêu cầu thời gian dừng rất ngắn, có thể không phù hợp.
+
+c) CMS (Concurrent Mark-Sweep) Garbage Collector
+Đặc điểm: Thực hiện các bước đánh dấu và dọn dẹp đồng thời với việc chạy ứng dụng, giúp giảm thời gian dừng.
+Ưu điểm: Giảm thiểu thời gian dừng, rất hữu ích trong các ứng dụng yêu cầu khả năng đáp ứng thời gian thực.
+Nhược điểm: Tốn tài nguyên hệ thống, có thể gây phân mảnh bộ nhớ.
+
+d) G1 Garbage Collector (Garbage First)
+Đặc điểm: Được thiết kế để xử lý các bộ nhớ lớn, G1 chia bộ nhớ thành các khu vực nhỏ và quản lý các khu vực này theo cách tối ưu hóa. G1 có khả năng giảm thiểu thời gian dừng và có thể được cấu hình cho các yêu cầu thời gian dừng thấp.
+Ưu điểm: Quản lý bộ nhớ hiệu quả và giảm thiểu thời gian dừng.
+Nhược điểm: Cần cấu hình và có thể phức tạp hơn CMS.
+
+e) ZGC (Z Garbage Collector)
+Đặc điểm: GC mới hơn được thiết kế để giảm thiểu thời gian dừng gần như bằng 0. ZGC sử dụng các chiến thuật như quản lý bộ nhớ dựa trên vùng và sử dụng các luồng đồng thời để cải thiện hiệu suất.
+Ưu điểm: Thời gian dừng gần như bằng 0, phù hợp cho ứng dụng có yêu cầu rất cao về độ trễ.
+Nhược điểm: Chưa hỗ trợ tất cả các tính năng JVM cũ, cần tài nguyên hệ thống mạnh.
+
+f) Shenandoah Garbage Collector
+Đặc điểm: GC tương tự như ZGC, được tối ưu hóa cho các hệ thống yêu cầu độ trễ cực thấp.
+Ưu điểm: Thời gian dừng gần như bằng 0 và hoạt động tốt với các ứng dụng yêu cầu độ trễ thấp.
+Nhược điểm: Phức tạp và đòi hỏi tài nguyên hệ thống.
+
+
+
+4. Các khu vực bộ nhớ trong Garbage Collection
+JVM sử dụng nhiều khu vực bộ nhớ khác nhau cho GC, chủ yếu là Heap và Stack:
+
+Heap: Chứa các đối tượng động (objects) và là khu vực chính mà Garbage Collector quản lý.
+
+Young Generation: Chứa các đối tượng mới được tạo ra. Đây là nơi GC thường xuyên hoạt động.
+Old Generation (Tenured Generation): Chứa các đối tượng đã sống lâu dài. Các đối tượng ở đây ít bị thu gom hơn.
+Permanent Generation (hoặc Metaspace): Chứa các thông tin liên quan đến lớp (class metadata), nhưng từ Java 8 trở đi, khu vực này được thay thế bằng Metaspace.
+Stack: Chứa các đối tượng và biến cục bộ của các phương thức. Stack không phải là nơi Garbage Collection diễn ra, vì các đối tượng trong stack được quản lý trực tiếp khi phương thức kết thúc.
+
+5. Các yếu tố ảnh hưởng đến Garbage Collection
+Kích thước của Heap: Kích thước quá lớn hoặc quá nhỏ có thể ảnh hưởng đến hiệu quả của GC.
+Loại Garbage Collector: Lựa chọn GC phù hợp với yêu cầu ứng dụng có thể ảnh hưởng lớn đến hiệu suất.
+Tần suất tạo đối tượng: Các ứng dụng tạo đối tượng nhiều và thường xuyên có thể kích hoạt GC nhiều hơn, làm giảm hiệu suất.
+6. Các công cụ theo dõi Garbage Collection
+JVM logs: Sử dụng các tham số như -Xloggc:<file-path> để ghi log GC và theo dõi hiệu suất.
+JVisualVM: Một công cụ giúp giám sát và phân tích Garbage Collection, bộ nhớ và hiệu suất của JVM.
+GC Logs Analysis: Dùng công cụ phân tích log để kiểm tra hiệu quả GC và tìm các vấn đề về bộ nhớ.
+Kết luận
+Garbage Collection (GC) là một phần quan trọng trong quản lý bộ nhớ của JVM, giúp tự động giải phóng bộ nhớ không sử dụng, giảm thiểu rò rỉ bộ nhớ và tối ưu hóa hiệu suất ứng dụng.
+Chọn loại GC phù hợp và cấu hình hợp lý có thể giúp giảm thiểu thời gian dừng ứng dụng và cải thiện hiệu suất tổng thể.

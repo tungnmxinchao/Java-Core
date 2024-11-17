@@ -1,0 +1,28 @@
+1. Vị trí lưu trữ: Method Area
+Method Area (khu vực bộ nhớ chứa metadata về các lớp) là nơi lưu trữ tất cả các biến static.
+Biến static được liên kết với class thay vì đối tượng (instance), vì vậy nó được khởi tạo chỉ một lần khi lớp được tải vào JVM.
+Mọi đối tượng thuộc lớp đó hoặc bất kỳ đoạn mã nào khác có thể truy cập biến static thông qua lớp mà không cần tạo đối tượng.
+2. Đặc điểm của biến static trong bộ nhớ
+
+Phạm vi (Scope):
+Biến static tồn tại trong suốt thời gian sống của chương trình, từ khi lớp được tải cho đến khi JVM dừng.
+Chia sẻ (Shared Memory):
+Vì chỉ có một bản sao của biến static, tất cả các đối tượng hoặc luồng truy cập biến đó sẽ thao tác trên cùng một giá trị.
+Điều này giúp tiết kiệm bộ nhớ và đảm bảo tính nhất quán dữ liệu.
+Truy cập:
+Có thể được truy cập thông qua tên lớp (e.g., ClassName.variableName) hoặc qua một đối tượng (e.g., object.variableName), nhưng khuyến nghị dùng tên lớp.
+
+3. Khi nào biến static được khởi tạo?
+Biến static được khởi tạo khi:
+Lớp chứa biến static được tải lần đầu tiên vào JVM.
+Trước khi bất kỳ phương thức hoặc thành phần nào khác của lớp được sử dụng.
+
+4. Ưu và nhược điểm của biến static
+Ưu điểm:
+Tiết kiệm bộ nhớ vì chỉ có một bản sao được lưu.
+Thích hợp cho các hằng số hoặc biến cần được chia sẻ giữa nhiều đối tượng.
+Dễ truy cập mà không cần tạo đối tượng.
+Nhược điểm:
+Có thể gây xung đột dữ liệu nếu không được đồng bộ hóa (synchronization) trong các ứng dụng đa luồng.
+Giảm tính linh hoạt vì biến static không thuộc về bất kỳ đối tượng cụ thể nào.
+
