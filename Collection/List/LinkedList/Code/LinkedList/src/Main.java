@@ -5,8 +5,7 @@ public class Main {
         list.addLast(20);
         list.addLast(30);
         list.addLast(120);
-        list.addIndex(33, 2);
-
+        list.removeIndex(3);
         list.display();
 
     }

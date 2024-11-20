@@ -47,6 +47,33 @@ public class LinkedList {
         current.next = node;
     }
 
+    public void removeIndex(int index){
+        if(index == 0){
+            removeFirst();
+            return;
+        }
+        Node current = head;
+        int possison = 0;
+
+        while (current.next != null && possison < index - 1){
+            System.out.println(possison < index - 1);
+            current = current.next;
+            possison++;
+        }
+
+        current.next = current.next.next;
+
+        if (current.next == null) {
+            tail = current;
+        }
+
+    }
+
+    public void  removeFirst(){
+        head = head.next;
+        tail = null;
+    }
+
     public void display() {
         if (head == null) {
             System.out.println("Danh sách rỗng.");
