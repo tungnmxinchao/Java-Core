@@ -74,6 +74,26 @@ public class LinkedList {
         tail = null;
     }
 
+    public void reverse() {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        tail = head;
+
+        while (current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+
+    }
+
     public void display() {
         if (head == null) {
             System.out.println("Danh sách rỗng.");
