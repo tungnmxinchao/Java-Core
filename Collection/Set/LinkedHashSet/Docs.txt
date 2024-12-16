@@ -1,0 +1,2 @@
+https://javaconceptoftheday.com/how-linkedhashset-works-internally-in-java/
+https://gpcoder.com/2686-linkedhashset-trong-java-hoat-dong-nhu-nao/
