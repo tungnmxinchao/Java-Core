@@ -1,1 +1,2 @@
 https://www.geeksforgeeks.org/internal-working-of-sethashset-in-java/
+https://techmaster.vn/posts/36839/tat-tan-tat-ve-java-collections-set-interface-phan-4
