@@ -1,3 +1,4 @@
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -6,6 +7,7 @@ public class Main {
         Set<String> names = new HashSet<>();
         Set<Person> personSet = new HashSet<>();
         Set<Person> personSet2 = new HashSet<>();
+        Set<Days> enumdays = EnumSet.allOf(Days.class);
 
         names.add("Tung");
         names.add("Tung");
@@ -39,6 +41,7 @@ public class Main {
         System.out.println(names);
         System.out.println(personSet);
         System.out.println(personSet2);
+        System.out.println(enumdays);
 
 
     }
