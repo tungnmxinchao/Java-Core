@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -7,6 +8,7 @@ public class Main {
         Queue<Integer> pq = new LinkedList<>();
         Queue<Integer> pq2 = new PriorityQueue<>();
         Queue<Student> students = new PriorityQueue<>();
+//        Queue<Student> students = new PriorityQueue<>(Comparator.comparing(Student::getId).reversed());
 
         pq.add(1);
         pq.add(5);
