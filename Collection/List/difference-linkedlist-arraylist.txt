@@ -1,0 +1,31 @@
+ArrayList và LinkedList là hai cấu trúc dữ liệu rất phổ biến trong Java, thuộc Java Collections Framework. Cả hai đều được sử dụng để lưu trữ một danh sách các phần tử, nhưng chúng có những đặc điểm và cách hoạt động khác nhau. Dưới đây là các điểm khác biệt chính giữa ArrayList và LinkedList:
+
+ArrayList:
+Cấu trúc (Structure):
+
+ArrayList sử dụng một mảng động để lưu trữ các phần tử. Khi mảng đầy, nó sẽ tạo một mảng mới lớn hơn và sao chép các phần tử cũ vào.
+Thao tác truy cập (Access Time):
+
+Truy cập phần tử theo chỉ số (index) là nhanh (O(1)) vì ArrayList hỗ trợ truy cập ngẫu nhiên.
+Thao tác chèn và xóa (Insertions and Deletions):
+
+Thao tác chèn và xóa phần tử ở giữa danh sách là chậm (O(n)) vì cần phải dịch chuyển các phần tử sau nó.
+Bộ nhớ (Memory):
+
+ArrayList tiêu tốn ít bộ nhớ hơn vì chỉ lưu trữ các phần tử và không cần lưu trữ các liên kết (references) giữa các phần tử.
+LinkedList:
+Cấu trúc (Structure):
+
+LinkedList sử dụng các nút (nodes), mỗi nút chứa một phần tử và một liên kết (reference) tới nút tiếp theo và nút trước đó (trong trường hợp Double LinkedList).
+Thao tác truy cập (Access Time):
+
+Truy cập phần tử theo chỉ số là chậm (O(n)) vì cần phải duyệt qua các nút từ đầu hoặc cuối danh sách.
+Thao tác chèn và xóa (Insertions and Deletions):
+
+Thao tác chèn và xóa phần tử ở giữa danh sách là nhanh (O(1)) vì chỉ cần thay đổi các liên kết giữa các nút.
+Bộ nhớ (Memory):
+
+LinkedList tiêu tốn nhiều bộ nhớ hơn do cần lưu trữ các liên kết giữa các nút.
+Khi nào sử dụng ArrayList và LinkedList:
+ArrayList: Sử dụng khi cần truy cập ngẫu nhiên nhanh và ít thao tác chèn/xóa.
+LinkedList: Sử dụng khi có nhiều thao tác chèn/xóa và ít yêu cầu truy cập ngẫu nhiên.
