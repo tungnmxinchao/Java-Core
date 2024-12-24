@@ -1,0 +1,26 @@
+HashMap và Hashtable là hai cấu trúc dữ liệu phổ biến trong Java để lưu trữ các cặp key-value. Dưới đây là các điểm khác biệt chính giữa chúng:
+
+Sự khác biệt về đồng bộ hóa (Synchronization):
+
+HashMap: Không đồng bộ. Điều này có nghĩa là nó không an toàn trong các ứng dụng đa luồng trừ khi được quản lý riêng (ví dụ, sử dụng các phương pháp đồng bộ hóa bên ngoài).
+Hashtable: Đồng bộ. Điều này có nghĩa là nó an toàn trong các ứng dụng đa luồng, tuy nhiên, điều này cũng làm cho Hashtable chậm hơn HashMap.
+Cho phép giá trị null:
+
+HashMap: Cho phép một key null và nhiều giá trị null.
+Hashtable: Không cho phép bất kỳ key hoặc giá trị null nào.
+Hiệu suất:
+
+HashMap: Thường nhanh hơn Hashtable vì không có sự đồng bộ hóa mặc định.
+Hashtable: Chậm hơn do đồng bộ hóa.
+Kế thừa:
+
+HashMap: Là một phần của bộ sưu tập Java Collection Framework và được giới thiệu từ Java 1.2.
+Hashtable: Là một lớp cũ từ Java 1.0 và là một phần của Java’s Legacy.
+Iterator:
+
+HashMap: Sử dụng Iterator để duyệt qua các phần tử.
+Hashtable: Sử dụng Enumerator và Iterator.
+Thừa kế:
+
+HashMap: Kế thừa từ AbstractMap.
+Hashtable: Kế thừa từ Dictionary.
